@@ -1,0 +1,82 @@
+package WARTOR;
+
+import java.util.Random;
+
+public class AnimalAcuatico {
+	byte id; // 1 = pez; 2 = tiburon;
+	byte sexo;
+	int posicion = -1;
+	//int coordH;
+	//int coordV;
+	
+	public AnimalAcuatico(byte id){
+		this.id = (byte) id;
+		this.sexo = GenerateSex();
+		this.posicion = GenerateCoord();
+		//this.coordH = GenerateCoord(); 
+		//this.coordV = GenerateCoord();
+	}
+	
+	public AnimalAcuatico(byte id, byte sexo){
+		this.id = id;
+		this.sexo = sexo;
+		this.posicion = GenerateCoord();
+		//this.coordH = GenerateCoord(); 
+		//this.coordV = GenerateCoord();
+	}
+	
+	protected byte GenerateSex(){
+		byte sex;
+		Random random = new Random();
+		sex = (byte) random.nextInt(2);
+		return sex;
+	}
+
+	protected byte GetId(){
+		return this.id;
+	}
+	
+	protected byte GetSex(){
+		return this.sexo;
+	}
+	
+	/*protected void Moverse(){
+		Random random = new Random();
+		
+		switch(random.nextInt(4)){
+		case 0: // Derecha
+			coordH++;
+			break;
+		case 1: // Izquierda
+			coordH--;
+			break;
+		case 2: // Abajo
+			coordV++;
+			break;
+		case 3: // Arriba
+			coordV--;
+			break;
+		}
+		
+		/*if (Choque(coordH,coordV)){
+			//Comprobaciones de sexo y tipo
+		}
+		else{
+			//Guardar en el array
+		}*/
+	
+
+	private void Choque(int coordH2, int coordV2) {
+		// TODO Auto-generated method stub
+	}
+
+	protected int GenerateCoord(){
+		Random random = new Random();
+		int coord = 0;
+		coord = random.nextInt(1000000);
+		return coord;
+	}
+
+	protected void EliminarPez(AnimalAcuatico objetc1){	
+	}
+}
