@@ -1,0 +1,63 @@
+package WARTOR;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Main {
+
+	// Atributos
+
+	static ArrayList<AnimalAcuatico> estanque = new ArrayList<AnimalAcuatico>();
+	static AnimalAcuatico animalito;
+
+	public static void CrearMundo() {
+		// creamos los 100 peces
+		for (int i = 1; i <= 100; i++) {
+			animalito = new AnimalAcuatico((byte) 1);
+			estanque.add(animalito);
+		}
+		// creamos los 10 tiburones
+		for (int i = 1; i <= 10; i++) {
+			animalito = new AnimalAcuatico((byte) 2);
+			estanque.add(animalito);
+		}
+	}
+
+	public static void MostrarEstanque(){
+		byte contador = 1;
+		Iterator<AnimalAcuatico> nombreIterator = estanque.iterator();
+		// Mostrar listado del estanque
+		while (nombreIterator.hasNext()) {
+			AnimalAcuatico elemento = nombreIterator.next();
+			byte aux_sexo;
+			byte aux_especie;
+			int lugar;
+			String sexo;
+			String especie;
+			aux_especie = elemento.GetId();
+			aux_sexo = elemento.GetSex();
+			lugar = elemento.posicion;
+			if (aux_especie==1){
+				especie = "PEZ";
+			}else{
+				especie = "TIBURON";
+			};
+			if (aux_sexo==1){
+				sexo = "MACHO";
+			}else{
+				sexo = "HEMBRA";
+			};
+			
+			System.out.println("Animal acuatico " + contador + " ====> " + especie + " " + sexo +" "+"y su ubicacion es: " + lugar);
+			contador++;
+		}
+	}
+	public static void main(String[] args) {
+		CrearMundo();
+		MostrarEstanque();
+		/*estanque.remove(0);
+		System.out.println("Elimino elemento 110");
+		MostrarEstanque();*/
+	}
+	
+}
