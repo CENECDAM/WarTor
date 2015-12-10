@@ -1,0 +1,105 @@
+package test;
+
+import java.util.Random;
+
+public class Pez extends Thread {
+	private int x;
+	private int y;
+	private byte sexo;
+	private byte especie;
+	private PanelAcuatico acuario;
+
+	public Pez(PanelAcuatico acuario) {
+		this.x = new Random().nextInt(1001);
+		this.y = new Random().nextInt(1001);
+		this.sexo = (byte) (new Random().nextInt(2) + 1);
+		this.especie = (byte) (new Random().nextInt(2) + 1);
+		this.acuario = acuario;
+	}
+	
+	public Pez(PanelAcuatico acuario, byte especie, byte sexo) {
+		this.x = new Random().nextInt(1001);
+		this.y = new Random().nextInt(1001);
+		this.sexo = sexo;
+		this.especie = especie;
+		this.acuario = acuario;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public byte getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(byte sexo) {
+		this.sexo = sexo;
+	}
+
+	public byte getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(byte especie) {
+		this.especie = especie;
+	}
+	
+	public void run() {
+		while (true) {
+			Moverse();
+			acuario.repaint();
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void Moverse(){
+		
+		switch(new Random().nextInt(4)){
+		case 0:
+			this.x++;
+			break;
+		case 1:
+			this.x--;
+			break;
+		case 2:
+			this.y++;
+			break;
+		case 3:
+			this.y--;
+			break;
+		}
+		
+		if(this.x > 1000){
+			this.x = 0;
+		}
+		else if(this.x < 0){
+			this.x = 1000;
+		}
+		else if(this.y > 1000){
+			this.y = 0;
+		}
+		else if(this.y < 0){
+			this.y = 1000;
+		}
+		
+		//ComprobarPosicion();
+		
+	}
+}
