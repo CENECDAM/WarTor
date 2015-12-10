@@ -93,10 +93,26 @@ public class AnimalAcuatico {
 		return false;
 	}
 	
-	public String sexo(byte id, byte id2){
-	
+	//ESTO DE AQUI ES EL METODO QUE EJECUTA AL SEXO O PELEA
+	public String AccionAlChocar(byte id, byte id2){
+		String especieid1;
+		String especieid2;
+		
+		especieid1 = comprobarespecie(id); //Asigna la especie al "especieid1"
+		especieid2 = comprobarespecie(id2); //Asigna la especie al "especieid2"
 		
 		
+		if(especieid1 == especieid2){
+			//Falta por comprobar si son masculino o femenino. En el caso de tener distinto sexo follan
+			//Combate entre los especies con un 50% de posibilidades de ganar cada 1
+			
+			
+		} else if (especieid1 != especieid2){
+			
+			//Llamamos la función de eliminar pez.
+			
+			
+		}
 		return null;
 	
 	}
