@@ -77,6 +77,5 @@ public class AnimalAcuatico {
 		return coord;
 	}
 
-	protected void EliminarPez(AnimalAcuatico objetc1){	
-	}
+
 }
