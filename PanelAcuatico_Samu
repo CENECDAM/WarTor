@@ -9,7 +9,15 @@ import javax.swing.JPanel;
 public class PanelAcuatico extends JPanel {
 	private ArrayList<Pez> animales = new ArrayList<Pez>();
 
-		public PanelAcuatico() {
+	public ArrayList<Pez> verAnimales(){
+		return animales;
+	}
+	
+	public void addAnimal(Pez ob){
+		animales.add(ob);
+	}
+	
+	public PanelAcuatico() {
 		this.setBounds(0, 0, 1000, 1000);
 		this.setBackground(Color.BLUE);
 		Inicializar();
@@ -25,7 +33,7 @@ public class PanelAcuatico extends JPanel {
 			else{
 				g.setColor(Color.GRAY);
 			}
-			g.fillRect(animales.get(i).getX(), animales.get(i).getY(), 10, 10);
+			g.fillRect(animales.get(i).getPosicion().x, animales.get(i).getPosicion().y, animales.get(i).getPosicion().width, animales.get(i).getPosicion().height);
 		}
 	}
 	
