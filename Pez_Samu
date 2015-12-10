@@ -91,8 +91,27 @@ public class Pez extends Thread {
 		
 		posicion.setLocation(x, y);
 		
-		posicion.intersects(this.acuario.verAnimales().get(/*aqui va el contador*/).getPosicion());
-		//ComprobarPosicion();
+		
+		ComprobarPosicion();
 		
 	}
-}
+
+	private boolean ComprobarPosicion() {
+		boolean resultado;
+		byte elid;
+		AnimalAcuatico test = null;
+		AnimalAcuatico test2 = this;//ESTO DE AQUI SETA EN ROJO PORQUE LA CLASE SE LLAMA PEZ Y NO ANIMALACUATICO. HAY QUE
+		//CAMBIARLO 
+		//1234
+		for(int i = 0; i < animales.size(); i++){
+			resultado = posicion.intersects(this.acuario.verAnimales().get(i).getPosicion());
+			if(resultado = true){
+				test = acuario.getAnimales().get(i);
+				elid = test.getID();
+				if(elid != this){ //1234 - DUDA SI EL PEZ ES ASI
+					AnimalAcuatico.AccionAlChocar(test,test2); //ESTO DE AQUI ESTA ROJO POR LO DEL THIS EN LA LINEA 103
+				}
+				}
+			}
+		}
+	}
