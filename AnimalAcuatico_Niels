@@ -1,0 +1,127 @@
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class AnimalAcuatico {
+	byte id;
+	byte genero;
+	int x;
+	int y;
+	
+	public AnimalAcuatico(byte id){
+		this.id = id;
+		this.genero = GenerateSex();
+		do{
+			this.x = GenerateCoord(); 
+			this.y = GenerateCoord();
+		} while(ComprobarPosicion(Main.estanque));
+	}
+
+	public AnimalAcuatico(byte id, byte genero){
+		this.id = id;
+		this.genero = genero;
+		do{
+			this.x = GenerateCoord(); 
+			this.y = GenerateCoord();
+		} while(ComprobarPosicion(Main.estanque));
+	}
+	
+	private byte GenerateSex(){
+		byte sex;
+		Random random = new Random();
+		
+		sex = (byte) random.nextInt(2);
+		
+		return sex;
+	}
+
+	public byte GetId(){
+		return this.id;
+	}
+	
+	public byte GetSex(){
+		return this.genero;
+	}
+	
+	public int GetX(){
+		return this.x;
+	}
+	
+	public int GetY(){
+		return this.y;
+	}
+	
+	public void Moverse(){
+		Random random = new Random();
+		
+		switch(random.nextInt(4)){
+		case 0: // Derecha
+			x++;
+			break;
+		case 1: // Izquierda
+			x--;
+			break;
+		case 2: // Abajo
+			y++;
+			break;
+		case 3: // Arriba
+			y--;
+			break;
+		}
+		
+		
+	}
+
+	private int GenerateCoord(){
+		Random random = new Random();
+		int coord = 0;
+		
+		coord = random.nextInt(1000);
+		
+		return coord;
+	}
+	
+	private boolean ComprobarPosicion(ArrayList<AnimalAcuatico> estanque) {
+		int contador = 0;
+		
+		for(contador = 0; contador < estanque.size(); contador++){
+			if(estanque.get(contador).GetX() == this.x && estanque.get(contador).GetY() == this.y){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public String sexo(byte id, byte id2){
+	
+		
+		
+		return null;
+	
+	}
+	//Este metodo se puede llamar para que devuelva el tipo de animal que es (devuelve un string con "tiburon" o "pez")
+	public String comprobarespecie(byte id) {
+		 String PrimeraLetra = null;
+		 String str = Character.toString((char) id); //Esto pasa de Char a String ya que no se puede usar el Substring
+		 											//con un Char
+		 String especie = null;
+		//Aqui solo se comprueba a ver si es 1 o 2. No tiene en cuenta si modificamos el ID, solo mira
+		//ID = la PRIMERA letra del ID 
+		 PrimeraLetra = str.substring(0, 1);
+		 
+		 
+		if(PrimeraLetra == "1"){ //en el caso de ser 1
+				
+			especie = "pez";
+			
+			
+		}else { //si el tiburon es 2
+			especie = "tiburon";
+		}
+		
+		return especie;
+	}
+	
+	
+}
