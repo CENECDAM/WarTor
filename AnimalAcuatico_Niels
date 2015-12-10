@@ -1,5 +1,6 @@
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class AnimalAcuatico {
@@ -95,7 +96,7 @@ public class AnimalAcuatico {
 	
 	//ESTO DE AQUI ES EL METODO QUE EJECUTA AL SEXO O PELEA.
 	//LE PASA LOS 2 ANIMALESACUATICOS QUE SE HAN CHOCADO.
-	public String AccionAlChocar(AnimalAcuatico PrimerAnimal, AnimalAcuatico SegundoAnimal){
+	public void AccionAlChocar(AnimalAcuatico PrimerAnimal, AnimalAcuatico SegundoAnimal){
 		String especieid1;
 		String especieid2;
 		Byte Sexoid1;
@@ -117,19 +118,19 @@ public class AnimalAcuatico {
 				Superviviente = Pelearse(PrimerAnimal,SegundoAnimal); //El metodo Pelearse ya elimina el pez/tiburon que muere
 			}else if (Sexoid1 != Sexoid2){
 				//FOLLAN
-				if(especieid1 == "pez"){
+				if(especieid1 == "pez"){ //Si el ID es de Pez, se ejecuta el metodo reproducir Pez
 					
 					ReproducirPez();
 					
 				}
-				if(especieid1 == "tiburon"){
+				if(especieid1 == "tiburon"){//Si el ID es de tiburon, se ejecuta el metodo reproducir Tiburon
 					
 					ReproducirTiburon();
 					
 				}
 			}
 			
-		} else if(especieid1 != especieid2){
+		} else if(especieid1 != especieid2){ //En el caso de ser especie distinto. El Tiburon mata al pez.
 			
 			
 		
@@ -142,7 +143,7 @@ public class AnimalAcuatico {
 			
 			
 		}
-		return null;
+
 	
 	}
 	//Este metodo se puede llamar para que devuelva el tipo de animal que es (devuelve un string con "tiburon" o "pez")
@@ -167,15 +168,34 @@ public class AnimalAcuatico {
 		
 		return especie;
 	}
-	protected void EliminarPez(AnimalAcuatico objetc1){	
+	public ArrayList EliminarPez(AnimalAcuatico objetc1){	
+		//Elimina el Pez del array de Animales usando Memoria dinamica.
+		ArrayList<Pez> lista = ;
+		//1234 - TENGO DUDA DE COMO COGER EL ARRAYLIST DE LA CLASE PANELACUATICO_SAMU
 		
-		
+		for (int j = lista.length-1; j >= 0; j--) {
+			lista.remove(objetc1); //ESto de aqui elimina el pez mandado
+		}
 	}
-protected AnimalAcuatico Pelearse(AnimalAcuatico PrimerAnimal,AnimalAcuatico SegundoAnimal){	
+	public ArrayList EliminarTiburon(AnimalAcuatico objetc1){	
+		//Elimina el Tiburon del array de Animales usando Memoria dinamica.
+		ArrayList<Tiburon> lista = ;
+		//1234 - TENGO DUDA DE COMO COGER EL ARRAYLIST DE LA CLASE PANELACUATICO_SAMU
+		
+		for (int j = lista.length-1; j >= 0; j--) {
+			lista.remove(objetc1); //ESto de aqui elimina el pez mandado
+		}
+	}
+	protected AnimalAcuatico Pelearse(AnimalAcuatico PrimerAnimal,AnimalAcuatico SegundoAnimal){	
 	AnimalAcuatico Ganador = null;
 	int numeroaleatorio;
+	int especie;
+	String especieid1;
 	Random r = new Random();
 	 numeroaleatorio = r.nextInt(0)+1;  //GENERA UN NUMERO ALEATORIO ENTRE 0 Y 1
+	 especieid1 = comprobarespecie(PrimerAnimal.GetId()); //Asigna la especie del animal 1 al "especieid1"
+
+	 if(especieid1 == "Pez"){
 	 if(numeroaleatorio == 1){
 		 Ganador = PrimerAnimal;
 		 EliminarPez(SegundoAnimal);
@@ -185,20 +205,34 @@ protected AnimalAcuatico Pelearse(AnimalAcuatico PrimerAnimal,AnimalAcuatico Seg
 		 EliminarPez(PrimerAnimal);
 		 
 	 }
+	 } else {
+		 
+		 if(numeroaleatorio == 1){
+			 Ganador = PrimerAnimal;
+			 EliminarTiburon(SegundoAnimal);
+		 }else{ 
+			 
+			 Ganador = SegundoAnimal;
+			 EliminarTiburon(PrimerAnimal);
+			 
+		 }
+		 
+		 
+	 }
 		return Ganador;
 	}
 public AnimalAcuatico ReproducirPez(){	
-	
+	Pez nuevoPez = New Pez;
 	
 	//Falta por completar
 	
-	return null;
+	return nuevoPez;
 	}
 public AnimalAcuatico ReproducirTiburon(){	
-
+	Tiburon NuevoTiburon = New Tiburon;
 	
 	//Falta por completar
 	
-	return null;
+	return NuevoTiburon;
 	}
 }
