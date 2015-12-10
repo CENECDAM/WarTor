@@ -1,62 +1,50 @@
 package test;
 
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Pez extends Thread {
-	private int x;
-	private int y;
+	private static int peces = 0;
+	private int id;
+	private Rectangle posicion;
 	private byte sexo;
 	private byte especie;
 	private PanelAcuatico acuario;
 
 	public Pez(PanelAcuatico acuario) {
-		this.x = new Random().nextInt(1001);
-		this.y = new Random().nextInt(1001);
+		this.id = peces;
+		peces++;
+		this.posicion = new Rectangle(new Random().nextInt(1001), new Random().nextInt(1001), 10, 10);
 		this.sexo = (byte) (new Random().nextInt(2) + 1);
 		this.especie = (byte) (new Random().nextInt(2) + 1);
 		this.acuario = acuario;
 	}
 	
 	public Pez(PanelAcuatico acuario, byte especie, byte sexo) {
-		this.x = new Random().nextInt(1001);
-		this.y = new Random().nextInt(1001);
+		this.id = peces;
+		peces++;
+		this.posicion = new Rectangle(new Random().nextInt(1001), new Random().nextInt(1001), 10, 10);
 		this.sexo = sexo;
 		this.especie = especie;
 		this.acuario = acuario;
 	}
 
-	public int getX() {
-		return x;
+	public Rectangle getPosicion(){
+		return this.posicion;
 	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
+	
 	public byte getSexo() {
 		return sexo;
-	}
-
-	public void setSexo(byte sexo) {
-		this.sexo = sexo;
 	}
 
 	public byte getEspecie() {
 		return especie;
 	}
 
-	public void setEspecie(byte especie) {
-		this.especie = especie;
+	public int getid() {
+		return id;
 	}
-	
+
 	public void run() {
 		while (true) {
 			Moverse();
@@ -70,35 +58,40 @@ public class Pez extends Thread {
 	}
 	
 	private void Moverse(){
+		int x = posicion.x;
+		int y = posicion.y;
 		
 		switch(new Random().nextInt(4)){
 		case 0:
-			this.x++;
+			x++;
 			break;
 		case 1:
-			this.x--;
+			x--;
 			break;
 		case 2:
-			this.y++;
+			y++;
 			break;
 		case 3:
-			this.y--;
+			y--;
 			break;
 		}
 		
-		if(this.x > 1000){
-			this.x = 0;
+		if(x > 1000){
+			x = 1000;
 		}
-		else if(this.x < 0){
-			this.x = 1000;
+		else if(x < 0){
+			x = 0;
 		}
-		else if(this.y > 1000){
-			this.y = 0;
+		else if(y > 1000){
+			y = 1000;
 		}
-		else if(this.y < 0){
-			this.y = 1000;
+		else if(y < 0){
+			y = 0;
 		}
 		
+		posicion.setLocation(x, y);
+		
+		posicion.intersects(this.acuario.verAnimales().get(/*aqui va el contador*/).getPosicion());
 		//ComprobarPosicion();
 		
 	}
