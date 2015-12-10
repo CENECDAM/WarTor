@@ -66,10 +66,6 @@ public class AnimalAcuatico {
 		}*/
 	
 
-	private void Choque(int coordH2, int coordV2) {
-		// TODO Auto-generated method stub
-	}
-
 	protected int GenerateCoord(){
 		Random random = new Random();
 		int coord = 0;
