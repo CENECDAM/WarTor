@@ -1,0 +1,47 @@
+package test;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
+public class PanelAcuatico extends JPanel {
+	private ArrayList<Pez> animales = new ArrayList<Pez>();
+
+		public PanelAcuatico() {
+		this.setBounds(0, 0, 1000, 1000);
+		this.setBackground(Color.BLUE);
+		Inicializar();
+	}
+
+	public void paint(Graphics g) {
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, 1000, 1000);
+		for(int i = 0; i < animales.size(); i++){
+			if(animales.get(i).getEspecie() == 1){
+				g.setColor(Color.ORANGE);
+			}
+			else{
+				g.setColor(Color.GRAY);
+			}
+			g.fillRect(animales.get(i).getX(), animales.get(i).getY(), 10, 10);
+		}
+	}
+	
+	private void Inicializar(){
+		for(int i = 0; i < 50; i++){
+			animales.add(new Pez(this, (byte)1, (byte)1));
+			animales.add(new Pez(this, (byte)1, (byte)2));
+		}
+		
+		for(int i = 0; i < 5; i++){
+			animales.add(new Pez(this, (byte)2, (byte)1));
+			animales.add(new Pez(this, (byte)2, (byte)2));
+		}
+		
+		for(int i = 0; i < animales.size(); i++){
+			animales.get(i).start();
+		}
+	}
+}
