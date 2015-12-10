@@ -1,0 +1,14 @@
+package test;
+
+import javax.swing.JFrame;
+
+public class Ventana extends JFrame {
+
+	public Ventana() {
+		super("WarTor");
+		this.setBounds(0, 0, 1000, 1000);
+		this.setVisible(true);
+		this.add(new PanelAcuatico());
+	}
+
+}
