@@ -93,23 +93,40 @@ public class AnimalAcuatico {
 		return false;
 	}
 	
-	//ESTO DE AQUI ES EL METODO QUE EJECUTA AL SEXO O PELEA
-	public String AccionAlChocar(byte id, byte id2){
+	//ESTO DE AQUI ES EL METODO QUE EJECUTA AL SEXO O PELEA.
+	//LE PASA LOS 2 ANIMALESACUATICOS QUE SE HAN CHOCADO.
+	public String AccionAlChocar(AnimalAcuatico PrimerAnimal, AnimalAcuatico SegundoAnimal){
 		String especieid1;
 		String especieid2;
+		String Sexoid1;
+		String Sexoid2;
 		
-		especieid1 = comprobarespecie(id); //Asigna la especie al "especieid1"
-		especieid2 = comprobarespecie(id2); //Asigna la especie al "especieid2"
+		especieid1 = comprobarespecie(PrimerAnimal.GetId()); //Asigna la especie del animal 1 al "especieid1"
+		especieid2 = comprobarespecie(SegundoAnimal.GetId()); //Asigna la especie del animal 2 al "especieid2"
 		
 		
 		if(especieid1 == especieid2){
 			//Falta por comprobar si son masculino o femenino. En el caso de tener distinto sexo follan
 			//Combate entre los especies con un 50% de posibilidades de ganar cada 1
+			Sexoid1 = PrimerAnimal.GetSex();
+			Sexoid2 = SegundoAnimal.GetSex();
+			if(Sexoid1 == Sexoid2){
+				//LLAMA METODO DE PELEARSE
+			}else if (Sexoid1 != Sexoid2){
+				//FOLLAN
+				
+			}
+			
+		} else if(especieid1 != especieid2){
 			
 			
-		} else if (especieid1 != especieid2){
+		
+			if(especieid1 == "pez"){
 			
-			//Llamamos la función de eliminar pez.
+			EliminarPez(PrimerAnimal);	//ESTO ESTA EN ROJO PORQUE NO ESTAN UNIDOS LAS CLASES TODAVIA
+			}else{
+				EliminarPez(SegundoAnimal);	//ESTO ESTA EN ROJO PORQUE NO ESTAN UNIDOS LAS CLASES TODAVIA	
+			}
 			
 			
 		}
