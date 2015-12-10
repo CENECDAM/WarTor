@@ -4,18 +4,6 @@ import java.util.ArrayList;
 
 public class Movimiento_Joaquin {
 	public static void main(String[] args) {
-		// Generamos las posiciones de los peces y tiburones de forma aleatoria
-		int[][] posicion = new int[1000][1000];
-		// Posiciones horizontales
-		for (int i = 0; i < 100; i++) {
-			int posicionHorizontal = 0;
-			posicionHorizontal = (int) (Math.random() * 1000);
-		}
-		// Posiciones Verticales
-		for (int j = 0; j < 1000; j++) {
-			int posicionVertical = 0;
-			posicionVertical = (int) (Math.random() * 1000);
-		}
 		// Generamos los animáles acuáticos
 		ArrayList<AnimalAcuatico> estanque = new ArrayList<AnimalAcuatico>();
 		AnimalAcuatico animalito;
@@ -29,5 +17,17 @@ public class Movimiento_Joaquin {
 		for (int i = 0; i < 10; i++) {
 			animalito = new AnimalAcuatico((byte) 2);
 			estanque.add(animalito);
+		}
+		// Generamos las posiciones de los peces y tiburones de forma aleatoria
+		int[][] posicion = new int[1000][1000];
+		// Posiciones horizontales
+		for (int i = 0; i < 100; i++) {
+			int posicionHorizontal = 0;
+			posicionHorizontal = (int) (Math.random() * 1000);
+		}
+		// Posiciones Verticales
+		for (int j = 0; j < 1000; j++) {
+			int posicionVertical = 0;
+			posicionVertical = (int) (Math.random() * 1000);
 		}
 	}
